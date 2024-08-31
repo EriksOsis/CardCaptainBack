@@ -1,0 +1,451 @@
+/* Apply box-sizing universally */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1b1b1b;
+    color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+}
+
+/* Starting Menu Overlay */
+.start-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1; /* Initially fully visible */
+    transition: opacity 0.5s ease;
+    z-index: 1000; /* Ensure it overlays all other content */
+}
+
+.start-menu-content {
+    text-align: center;
+}
+
+.start-menu-logo {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.start-menu-button {
+    padding: 15px 40px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    border: #3567be solid 2px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #1e3c72, #2a5298); /* Elegant gradient from dark blue to lighter blue */
+    color: white;
+    cursor: pointer;
+    transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    animation: glow 1.5s infinite alternate;
+}
+
+.start-menu-button:hover {
+    background: linear-gradient(145deg, #2a5298, #1e3c72); /* Reverse the gradient on hover */
+    transform: translateY(-5px) scale(1.05); /* Slightly lift and enlarge the button */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.start-menu-button:active {
+    background: linear-gradient(145deg, #1e3c72, #2a5298);
+    transform: translateY(0) scale(1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Hide the start menu by default, will be shown via JS */
+.hidden {
+    display: none;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #2a5298, 0 0 10px #2a5298, 0 0 20px #2a5298, 0 0 40px #2a5298;
+    }
+    100% {
+        box-shadow: 0 0 20px #1e3c72, 0 0 30px #1e3c72, 0 0 50px #1e3c72, 0 0 70px #1e3c72;
+    }
+}
+
+.how-to-use-link {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.how-to-use-link:hover {
+    color: #ccc;
+}
+
+.how-to-use-modal {
+    position: fixed;
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+    opacity: 0; /* Start with 0 opacity */
+    pointer-events: none; /* Prevent clicks when not visible */
+    transition: opacity 0.5s ease; /* Smooth transition for fade in/out */
+}
+
+.how-to-use-modal.show {
+    opacity: 1; /* Fully visible */
+    pointer-events: auto; /* Allow clicks when visible */
+}
+
+.modal-content {
+    background-color: #222;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+}
+
+.how-to-use-screenshot {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.container {
+    width: 100%;
+    background-image: url(./DALL·E\ 2024-08-20\ 18.03.33\ -\ A\ classy\ yet\ subtle\ background\ image\ suitable\ for\ a\ modern\,\ luxurious\ blackjack\ app.\ The\ image\ should\ feature\ dark\,\ smooth\ textures\ with\ gentle\ gradie.webp);
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center center;
+    max-width: 420px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 1;
+    
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay with 60% opacity */
+    backdrop-filter: blur(6px); /* Apply a blur effect */
+    z-index: -1; /* Place behind the content */
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.head {
+    font-weight: 700;
+}
+
+.player-count, .dealer-count {
+    margin-bottom: 5px;
+    text-align: center;
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.dealer-section,
+.player-section {
+    position: relative;
+}
+
+#playerCardsContainer, #dealerCards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+#playerCardsContainer {
+    flex-direction: column;
+}
+
+.cards {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    margin-top: 5px;
+}
+
+.card {
+    position: absolute;
+    width: 65px; /* Adjust the width to match your card images */
+    height: auto;
+    border-radius: 1px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow */
+    transition: left 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 0;
+    background-color: transparent;
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: scale(1.2) rotate(0deg); /* More pronounced scaling on hover */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+    z-index: 1000000;
+}
+
+.advice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.best-move, .bust-percentage {
+    width: 200px;
+    padding: 7px;
+    background-color: #333;
+    border: 1px solid #666;
+    border-radius: 10px;
+    min-height: 80px;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    color: #ffffff;
+    font-weight: 700;
+    overflow: hidden;
+    position: relative;
+}
+
+.best-move-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 0;
+}
+
+.best-move-title, .best-move-text, hr {
+    position: relative;
+    z-index: 2; /* Set to 2 so these elements are above the background */
+}
+
+.best-move-text {
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.best-move.hit .best-move-background {
+    opacity: 1;
+    background: linear-gradient(135deg, #5AA955, #3E7A3B);
+}
+
+.best-move.stand .best-move-background {
+    opacity: 1;
+    background: linear-gradient(135deg, #A74A4A, #7A2828);
+}
+
+.best-move.split .best-move-background {
+    opacity: 1;
+    background: linear-gradient(135deg, #C5B05A, #8F752C);
+    color: black;
+}
+
+.best-move.double-down .best-move-background {
+    opacity: 1;
+    background: linear-gradient(135deg, #527FBF, #2E5685);
+}
+
+.best-move .best-move-background {
+    opacity: 0; /* Start with opacity at 0 */
+}
+
+.bust-percentage-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+#instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    max-height: 40px;
+    min-height: 40px;
+}
+
+.card-input {
+    margin-top: 15px;
+}
+
+#cardButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px; /* Space between buttons */
+}
+
+.card-btn, .insurance-btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    flex: 1;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    background: linear-gradient(145deg, #444, #222);
+    color: #fff;
+    border: 2px solid #555;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-btn::before, .insurance-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+    transition: transform 0.5s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+.card-btn:hover::before, .insurance-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.card-btn:hover, .insurance-btn:hover {
+    background: linear-gradient(145deg, #555, #333);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.card-btn:active, .insurance-btn:active {
+    background: linear-gradient(145deg, #222, #111);
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+#newGameBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #c0392b, #a32a1d);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+#newGameBtn:hover {
+    background: linear-gradient(145deg, #a32a1d, #822015);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+#newGameBtn:active {
+    background: linear-gradient(145deg, #822015, #5e170f);
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 400px) {
+    .container {
+        padding: 12px;
+    }
+
+    .card-btn {
+        font-size: 16px;
+        padding: 12px;
+        height: 45px;
+    }
+
+    .card {
+        width: 50px;
+        height: 75px;
+        font-size: 18px;
+    }
+
+    #newGameBtn {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+
+/* Blinking cursor effect */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.instruction::after {
+    content: '|';
+    font-weight: bold;
+    animation: blink 1s step-end infinite;
+}

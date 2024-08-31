@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="alternativestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Card Captain - Blackjack card counter</title>
+</head>
+
+<body>
+    <!-- Starting Menu Overlay -->
+    <div id="startMenu" class="start-menu-overlay">
+        <div class="start-menu-content">
+            <img src="./photo_2024-08-22 11.23.28.jpeg" alt="Card Captain" class="start-menu-logo">
+            <button id="startButton" class="start-menu-button">Start</button>
+            <div id="howToUseLink" class="how-to-use-link">How to use</div>
+        </div>
+    </div>
+
+    <!-- How to Use Modal -->
+    <div id="howToUseModal" class="how-to-use-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>How to use Card Captain</h2>
+            <p><b>Step 1:</b> Open the app and start a new game.</p>
+            <img src="instructions_imgs/Screenshot 2024-08-27 at 12.47.58.png" alt="Screenshot 1"
+                class="how-to-use-screenshot">
+            <p><b>Step 2:</b> Enter the dealer's card and your cards as they are dealt.</p>
+            <img src="instructions_imgs/Screenshot 2024-08-27 at 12.48.15.png" alt="Screenshot 2"
+                class="how-to-use-screenshot">
+            <p><b>Step 3:</b> Follow the advice provided by the app to make the best moves.</p>
+            <img src="instructions_imgs/Screenshot 2024-08-27 at 12.48.32.png" alt="Screenshot 3"
+                class="how-to-use-screenshot">
+            <p><b>Step 4:</b> Continue playing until the game is over. The app will tell you the outcome.</p>
+            <img src="instructions_imgs/Screenshot 2024-08-27 at 12.49.04.png" alt="Screenshot 4"
+                class="how-to-use-screenshot">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Dealer's Section -->
+        <section class="section dealer-section">
+            <div class="head">Dealer's Cards</div>
+            <div>
+                Current Count: <span id="dealerCount" aria-live="polite">0</span>
+            </div>
+            <div id="dealerCards" class="cards"></div>
+        </section>
+
+        <!-- Player's Section -->
+        <section class="section player-section">
+            <div class="head">Player's Cards</div>
+            <div>
+                Current Count: <span id="playerCount" aria-live="polite">0</span>
+            </div>
+            <div id="playerCardsContainer">
+                <div id="playerHand0" class="cards"></div>
+            </div>
+        </section>
+
+        <!-- Best Move Display -->
+        <section class="advice">
+            <div class="best-move">
+                <div class="best-move-background"></div>
+                <div class="best-move-title">Best Move:</div>
+                <hr>
+                <div id="bestMoveText" class="best-move-text" aria-live="polite"></div>
+            </div>
+            <div class="bust-percentage">
+                <div class="bust-percentage-title">Dealer's Bust:</div>
+                <hr>
+                <div class="bust-percentage-text" aria-live="polite">0%</div>
+            </div>
+        </section>
+
+        <!-- Card Input and Instructions -->
+        <section class="card-input">
+            <div id="instruction">What card has been dealt to the dealer?👇</div>
+            <div id="cardButtons">
+                <!-- Card buttons will be inserted here by JS -->
+            </div>
+            <button id="newGameBtn" onclick="newGame()">
+                <i class="fas fa-redo-alt"></i>
+            </button>
+        </section>
+    </div>
+    <script>
+        // Initialize Telegram WebApp
+        Telegram.WebApp.ready();
+
+        // Handle the startapp parameter
+        const startParam = Telegram.WebApp.initDataUnsafe.start_param;
+
+        // Check if startParamElement exists before setting text
+        if (startParam) {
+            console.log('Start Parameter:', startParam);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const startMenu = document.getElementById('startMenu');
+            const startButton = document.getElementById('startButton');
+
+            startButton.addEventListener('click', () => {
+                // Add the fade-out class to trigger the CSS fade-out effect
+                startMenu.classList.add('fade-out');
+
+                // After the transition is done, completely hide the menu
+                setTimeout(() => {
+                    startMenu.classList.add('hidden');
+                }, 500); // Match this time with the CSS transition duration (0.5s = 500ms)
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const howToUseLink = document.getElementById('howToUseLink');
+            const howToUseModal = document.getElementById('howToUseModal');
+            const closeButton = document.querySelector('.close-button');
+
+            // Function to show the modal with fade-in effect
+            function showModal() {
+                howToUseModal.classList.add('show');
+            }
+
+            // Function to hide the modal with fade-out effect
+            function hideModal() {
+                howToUseModal.classList.remove('show');
+            }
+
+            // Show the How to Use modal when the link is clicked
+            howToUseLink.onclick = function () {
+                showModal();
+            };
+
+            // Hide the How to Use modal when the close button is clicked
+            closeButton.onclick = function () {
+                hideModal();
+            };
+
+            // Hide the How to Use modal when clicking outside the modal content
+            window.onclick = function (event) {
+                if (event.target == howToUseModal) {
+                    hideModal();
+                }
+            };
+        });
+    </script>
+    <script src="./old version.js"></script>
+</body>
+
+</html>

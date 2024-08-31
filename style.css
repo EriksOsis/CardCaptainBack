@@ -1,0 +1,227 @@
+/* Apply box-sizing universally */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2c2c2c;
+    color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.container {
+    width: 90%; /* Make the container take up more width on mobile */
+    max-width: 400px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #333;
+    border-radius: 10px;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
+}
+
+.section {
+    margin-bottom: 15px;
+}
+
+.player-count {
+    margin-top: 5px;
+    text-align: center;
+    color: #f8f9fa;
+}
+
+.dealer-section,
+.player-section {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+#playerCardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cards {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px; /* Adjusted for smaller screens */
+}
+
+/* .card {
+    position: absolute;
+    width: 45px;
+    height: 65px;
+    background-color: #fff;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    line-height: 65px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 0;
+}
+
+.card:hover {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+} */
+
+.card {
+    position: absolute;
+    width: 50px; /* Adjust the width to match your card images */
+    height: auto; /* Adjust the height to match your card images */
+    border-radius: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 0;
+    background-color: transparent; /* Remove background color as the image will cover it */
+    object-fit: cover; /* Ensure the image scales correctly within the card */
+}
+
+.card:hover {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.best-move-text {
+    padding: 8px;
+    background-color: #444;
+    border: 1px solid #888;
+    border-radius: 5px;
+    text-align: center;
+    min-height: 35px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #f8f9fa;
+}
+
+.card-input {
+    margin-top: 20px;
+}
+
+#cardButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 15px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 18px;
+    text-align: center;
+    height: 45px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    margin: 0 5px 0 0;
+}
+
+.card-btn:last-child {
+    margin-right: 0;
+}
+
+.card-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-btn:active {
+    background-color: #003d80;
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+#newGameBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#newGameBtn:hover {
+    background-color: #c0392b;
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 400px) {
+    .container {
+        padding: 8px;
+    }
+
+    .card-btn {
+        font-size: 16px;
+        padding: 10px;
+        height: 40px;
+    }
+
+    .card {
+        width: 40px;
+        height: 60px;
+        font-size: 18px;
+        line-height: 60px;
+    }
+
+    #newGameBtn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+.insurance-btn {
+    padding: 15px;
+    font-size: 20px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.insurance-btn:hover {
+    background-color: #0056b3;
+}
+
+.bust-percentage {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #f8f9fa;
+}
+
+/* Hover effects for devices that support it */
+@media (hover: hover) {
+    .card:hover,
+    .card-btn:hover {
+        transform: scale(1.1) rotate(0deg);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+}
