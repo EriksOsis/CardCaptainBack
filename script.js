@@ -12,7 +12,14 @@ bot.on('message', (msg) => {
 
     // Check if the message is a command and if it's the /start command
     if (msg.text.toLowerCase() === '/start') {
-        // Send a welcome message
-        bot.sendMessage(chatId, '♠️Welcome to Card Captain👨🏻‍✈️ - 🤖AI Blackjack card counting mini-app♥️\nTo start the mini-app press the button here👇');
+        // Send an image with a caption and a button
+        bot.sendPhoto(chatId, './photo_2024-08-22 11.23.28.jpeg', {
+            caption: '♠️Welcome to Card Captain👨🏻‍✈️ - 🤖AI Blackjack card counting mini-app♥️\nTo start the mini-app, press the button below 👇',
+            reply_markup: {
+                inline_keyboard: [[
+                    { text: '♥️Open App♠️', url: 'https://cardcaptain.netlify.app' }
+                ]]
+            }
+        });
     }
 });
