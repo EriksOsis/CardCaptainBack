@@ -1,7 +1,7 @@
 const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 
-const token = 'YOUR_TELEGRAM_BOT_TOKEN';
+const token = '7221990979:AAF8foSmrHHPYHsCuL0J1poduf7RJBIS4y4';
 const bot = new TelegramBot(token, { polling: true });
 
 // Express app to listen to $PORT
