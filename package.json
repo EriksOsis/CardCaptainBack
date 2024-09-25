@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^4.21.0",
     "http-server": "^14.1.1",
     "node-telegram-bot-api": "^0.66.0"
   }

@@ -23,6 +23,10 @@
     <div id="startMenu" class="start-menu-overlay">
         <div class="start-menu-content">
             <img src="./photo_2024-08-22 11.23.28.jpeg" alt="Card Captain" class="start-menu-logo">
+            <div class="login-container">
+                <input id="password-login" type="text" placeholder="Enter Password">
+                <p class="password-error hidden">Incorrect Password</p>
+            </div>
             <button id="startButton" class="start-menu-button">Start</button>
             <div id="howToUseLink" class="how-to-use-link">How to use</div>
         </div>
@@ -112,13 +116,18 @@
             const startButton = document.getElementById('startButton');
 
             startButton.addEventListener('click', () => {
-                // Add the fade-out class to trigger the CSS fade-out effect
-                startMenu.classList.add('fade-out');
+                if (document.getElementById('password-login').value == "LM8ovFHG") {
+                    // Add the fade-out class to trigger the CSS fade-out effect
+                    startMenu.classList.add('fade-out');
 
-                // After the transition is done, completely hide the menu
-                setTimeout(() => {
-                    startMenu.classList.add('hidden');
-                }, 500); // Match this time with the CSS transition duration (0.5s = 500ms)
+                    // After the transition is done, completely hide the menu
+                    setTimeout(() => {
+                        startMenu.classList.add('hidden');
+                    }, 500); // Match this time with the CSS transition duration (0.5s = 500ms)
+
+                } else if (document.getElementById('password-login').value !== "LM8ovFHG") {
+                    document.querySelector('.password-error').classList.remove("hidden");
+                }
             });
         });
 

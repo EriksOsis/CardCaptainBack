@@ -42,6 +42,53 @@ body {
     margin-bottom: 20px;
 }
 
+.login-container     {
+    margin-bottom: 35px; /* Center the input and add vertical space */
+}
+
+/* Password Input Styling */
+#password-login {
+    width: 80%; /* Make the input take up 80% of the container width */
+    padding: 15px; /* Add padding for a better feel */
+    font-size: 18px; /* Ensure the font size is comfortable */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for consistency with the app */
+    background-color: #1b1b1b; /* Dark background color to match the theme */
+    color: #f8f9fa; /* Light text color to contrast the background */
+    border: 2px solid #3567be; /* Blue border to match the theme's color */
+    border-radius: 8px; /* Rounded corners for a smooth appearance */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transitions on focus */
+}
+
+#password-login::placeholder {
+    color: #7a7a7a; /* Light gray color for the placeholder */
+    font-weight: bold; /* Light font weight for the placeholder text */
+}
+
+/* Hover and Focus Effects */
+#password-login:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(255, 255, 255, 0.2); /* Enhance the shadow */
+}
+
+#password-login:focus {
+    outline: none; /* Remove the default focus outline */
+    border-color: #2a5298; /* Change border color on focus */
+    box-shadow: 0 0 15px rgba(42, 82, 152, 0.6), inset 0 0 12px rgba(255, 255, 255, 0.2); /* Add a stronger focus effect */
+}
+
+/* Adjustments for Mobile Responsiveness */
+@media (max-width: 400px) {
+    #password-login {
+        width: 90%; /* On small screens, make the input slightly wider */
+        font-size: 16px; /* Adjust font size for readability */
+    }
+}
+
+.password-error {
+    color: red;
+}
+
+
 .start-menu-button {
     padding: 15px 40px;
     font-family: "Montserrat", sans-serif;
