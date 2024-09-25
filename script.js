@@ -8,6 +8,7 @@ const bot = new TelegramBot(token, { polling: true });
 const app = express();
 const port = process.env.PORT || 3000; // Use the port assigned by Heroku or default to 3000
 
+
 app.get('/', (req, res) => {
   res.send('Bot is running!');
 });
