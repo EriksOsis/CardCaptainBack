@@ -26,7 +26,7 @@ bot.on('message', (msg) => {
       caption: '♠️Welcome to Card Captain👨🏻‍✈️ - 🤖AI Blackjack card counting mini-app♥️\nTo start the mini-app, press the button below 👇',
       reply_markup: {
         inline_keyboard: [[
-          { text: '♥️Open App♠️', web_app: { url: 'https://cardcaptain.netlify.app' } }]
+          { text: '♥️Open App♠️', web_app: { url: 'https://c0rdc0ptain.netlify.app' } }]
         ]
       }
     });
